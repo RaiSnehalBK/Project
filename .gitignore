@@ -1,0 +1,21 @@
+# Python / Django
+__pycache__/
+*.pyc
+db.sqlite3
+.env
+
+# Static/user files
+/staticfiles/
+/media/
+
+# Virtual environments
+venv/
+.env*/        # if you use .env folders
+
+# IDE/editor
+.vscode/
+.idea/
+
+# OS files
+Thumbs.db
+.DS_Store
