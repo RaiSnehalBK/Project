@@ -1,0 +1,133 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+  .profile-page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+      padding: 50px 20px;
+      min-height: 100vh;
+  }
+
+  /* Cards */
+  .card {
+      width: 600px;
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 30px 35px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      border: 2px solid #e0f7fa;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: left;
+  }
+  .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 14px 35px rgba(0,0,0,0.15);
+  }
+
+  /* Profile Card */
+  .profile-card {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+  }
+  .avatar img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 4px solid #00acc1;
+      object-fit: cover;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+  }
+  .info h2 {
+      font-size: 28px;
+      color: #023047;
+      margin-bottom: 6px;
+  }
+  .info .sub-text {
+      font-size: 16px;
+      color: #0077b6;
+      margin-bottom: 10px;
+  }
+  .info .detail {
+      font-size: 16px;
+      color: #333;
+  }
+
+  /* Contact Card */
+  .settings-card h3 {
+      font-size: 22px;
+      color: #023047;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #e0f7fa;
+      padding-bottom: 8px;
+  }
+  .contact-info p {
+      font-size: 16px;
+      margin: 8px 0;
+      color: black;
+  }
+
+  /* Buttons */
+  .actions {
+      margin-top: 20px;
+      display: flex;
+      gap: 15px;
+  }
+  .btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s ease;
+      color: #fff;
+  }
+  .btn.edit { background: #0077b6; }
+  .btn.edit:hover { background: #005f87; }
+  .btn.password { background: #009688; }
+  .btn.password:hover { background: #00796b; }
+
+  /* Responsive */
+  @media(max-width: 650px){
+      .card { width: 90%; padding: 25px; }
+      .profile-card { flex-direction: column; text-align: center; }
+      .info h2 { font-size: 24px; }
+      .info .sub-text, .info .detail { font-size: 15px; }
+  }
+</style>
+
+<div class="profile-page">
+
+    <!-- Profile Card -->
+    <div class="card profile-card">
+        <div class="avatar">
+            <img src="{% static 'images/doc.jpg' %}" alt="Doctor Avatar">
+        </div>
+        <div class="info">
+            <h2>Dr. Anita Sharma</h2>
+            <p class="sub-text">Cardiologist | 12 Years Experience</p>
+            <p class="detail"><strong>Department:</strong> Cardiology Unit, Navy Hospital</p>
+        </div>
+    </div>
+
+    <!-- Contact Card -->
+    <div class="card settings-card">
+        <h3>Contact Information</h3>
+        <div class="contact-info">
+            <p><strong>Phone:</strong> +91 9876543210</p>
+            <p><strong>Email:</strong> anita.sharma@navyhospital.in</p>
+            <p><strong>Pager:</strong> #2245</p>
+        </div>
+        <div class="actions">
+            <button class="btn edit">Edit</button>
+            <button class="btn password">Change Password</button>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

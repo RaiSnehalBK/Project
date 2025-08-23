@@ -1,0 +1,64 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="dashboard-container">
+    
+    <!-- Left Side: Live Ambulance Feed -->
+    <div class="left-section">
+        <div class="card live-feed">
+            <h2>🚑 Live Ambulance Feed</h2>
+            <div class="video-placeholder">
+    <img src="{% url 'video_feed' %}" alt="Live Ambulance Feed" style="width:100%; height:auto; border-radius:10px;" />
+</div>
+
+        </div>
+    </div>
+
+    <!-- Right Side: Patient + Journey -->
+    <div class="right-section">
+        
+        <!-- Patient Details -->
+        <div class="card patient-card">
+            <h3>👤 Patient Details</h3>
+            <p><strong>Name:</strong> John Doe</p>
+            <p><strong>Age:</strong> 45</p>
+            <p><strong>Disease:</strong> Cardiac Arrest</p>
+        </div>
+
+        <!-- Journey Info -->
+        <div class="card journey-card">
+            <h3>🛣️ Journey Info</h3>
+            <p></p>
+<p>
+  <strong>Distance Left:</strong> 12 km &nbsp;&nbsp;&nbsp;&nbsp;
+  <strong>ETA:</strong> 25 mins
+</p>
+
+            <!-- Map -->
+            <div id="map"></div>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- 🔹 Page-specific scripts for dashboard -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    var map = L.map('map').setView([28.6139, 77.2090], 13); // Example coords
+
+    // Add OSM layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Add ambulance marker
+    L.marker([28.6139, 77.2090]).addTo(map)
+      .bindPopup("🚑 Ambulance Location")
+      .openPopup();
+});
+</script>
+{% endblock %}

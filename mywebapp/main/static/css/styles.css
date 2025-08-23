@@ -1,0 +1,201 @@
+/* ===== Base Styles ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden; /* 🚀 Page never scrolls */
+  font-family: 'Arial', sans-serif;
+  background-image: url("/static/images/background.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* ===== Navbar ===== */
+.navbar {
+  background: #01052b;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* ===== Toggle Button ===== */
+.sidebar-toggle {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.8rem;
+  cursor: pointer;
+  padding: 10px;
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  z-index: 1001;
+}
+
+.sidebar-toggle .close {
+  display: none;
+}
+
+/* ===== Logo ===== */
+.navbar-logo {
+  height: 50px;
+  margin-left: 10px;
+}
+
+/* ===== Title ===== */
+.navbar-title {
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 1.5rem;
+  pointer-events: none;
+  margin-left: 60px; /* Adjust based on logo */
+}
+
+/* ===== Sidebar ===== */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100vh;
+  background: #001529;
+  color: white;
+  padding-top: 80px;
+  z-index: 950;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.sidebar-menu {
+  list-style: none;
+}
+
+.sidebar-menu li {
+  padding: 15px 25px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background-color 0.3s;
+}
+
+.sidebar-menu li:hover {
+  background-color: #1890ff;
+}
+
+.sidebar-menu a {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ===== Content ===== */
+.content {
+  margin-top: 80px;
+  padding: 20px;
+  transition: margin-left 0.3s;
+  height: calc(100vh - 80px); /* full height minus navbar */
+  overflow: hidden; /* 🚫 No scroll */
+}
+
+/* ===== Active States ===== */
+.sidebar.active {
+  transform: translateX(0);
+}
+
+.sidebar.active ~ .content {
+  margin-left: 250px;
+}
+
+.sidebar.active ~ .navbar .sidebar-toggle .hamburger {
+  display: none;
+}
+
+.sidebar.active ~ .navbar .sidebar-toggle .close {
+  display: block;
+}
+
+/* ===== Dashboard Layout ===== */
+.dashboard-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* Left = bigger, Right = smaller */
+  gap: 20px;
+  height: 100%; /* Fill all content area */
+}
+
+
+
+/* Left side feed fills full height */
+.left-section .card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Right side cards fill vertically */
+.right-section {
+  display: grid;
+  grid-template-rows: 1fr 1fr; /* Split into two equal parts */
+  gap: 20px;
+  height: 100%;
+}
+
+/* Card styling */
+.card {
+  background: rgba(0, 21, 41, 0.85); /* Navy with transparency */
+  color: #fff; /* White text for contrast */
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+  overflow: hidden;
+}
+
+
+.live-feed h2 {
+    margin-bottom: 25px;   /* Adjust this value as per your design */
+}
+
+
+/* Extra old classes cleaned */
+.video-section, .patient-section {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.video-section img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+
+/* Map container inside Journey card */
+.journey-card {
+  display: flex;
+  flex-direction: column;
+}
+
+#map {
+  flex: 1;              /* Take up remaining space only */
+  min-height: 150px;    /* Ensures it doesn’t collapse */
+  border-radius: 10px;
+  margin-top: 10px;
+}

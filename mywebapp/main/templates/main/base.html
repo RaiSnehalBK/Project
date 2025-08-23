@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}My Site{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+
+  <!-- Navbar  -->
+  <nav class="navbar">
+    <button class="sidebar-toggle" aria-label="Toggle sidebar">
+      <span class="hamburger">☰</span>
+      <span class="close">×</span>
+    </button>
+    <img src="{% static 'images/logo.png' %}" alt="Company Logo" class="navbar-logo">
+    <span class="navbar-title">My Django Site</span>
+  </nav>
+
+  <!-- Sidebar Navigation (open by default with 'active') -->
+  <aside class="sidebar active">
+    <ul class="sidebar-menu">
+      <li><a href="{% url 'dashboard' %}">📊 Dashboard</a></li>
+      <li><a href="{% url 'profile' %}">👤 Profile</a></li>
+      <li><a href="{% url 'location' %}">📍 Location</a></li>
+      <li><a href="{% url 'settings' %}">⚙️ Settings</a></li>
+      <li><a href="{% url 'logout' %}">🚪 Logout</a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content Area -->
+  <main class="content">
+    {% block content %}
+    {% endblock %}
+  </main>
+
+  <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
