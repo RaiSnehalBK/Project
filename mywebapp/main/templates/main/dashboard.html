@@ -28,37 +28,19 @@
 
         <!-- Journey Info -->
         <div class="card journey-card">
-            <h3>🛣️ Journey Info</h3>
+            <h3>🛣️ Med Assistant</h3>
             <p></p>
 <p>
-  <strong>Distance Left:</strong> 12 km &nbsp;&nbsp;&nbsp;&nbsp;
-  <strong>ETA:</strong> 25 mins
+  <p><strong>Name:</strong> John Doe</p>
+            <p><strong>Rank:</strong> 45</p>
 </p>
 
-            <!-- Map -->
-            <div id="map"></div>
         </div>
     </div>
 
 </div>
 
 
-<!-- 🔹 Page-specific scripts for dashboard -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    var map = L.map('map').setView([28.6139, 77.2090], 13); // Example coords
 
-    // Add OSM layer
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(map);
 
-    // Add ambulance marker
-    L.marker([28.6139, 77.2090]).addTo(map)
-      .bindPopup("🚑 Ambulance Location")
-      .openPopup();
-});
-</script>
 {% endblock %}
