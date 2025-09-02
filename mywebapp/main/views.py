@@ -33,19 +33,13 @@ def dashboard(request):
         "disease": "Cardiac Arrest"
     }
 
-    journey = {
-        "distance": 12,   # in km
-        "eta": 25         # in minutes
-    }
 
     return render(request, "main/dashboard.html", {
         "patient": patient,
-        "journey": journey
+ 
     })
 
 # Other pages
-def location(request):
-    return render(request, "main/location.html")
 
 def profile(request):
     return render(request, "main/profile.html")
@@ -56,28 +50,4 @@ def settings(request):
 def logout(request):
     return render(request, "main/logout.html")
 
-import json
-from django.http import JsonResponse
-from django.shortcuts import redirect
-from django.views.decorators.csrf import csrf_exempt
-from django.contrib.auth.decorators import login_required
 
-@login_required
-def update_profile(request):
-    if request.method == "POST":
-        data = json.loads(request.body)
-        profile = request.user.profile
-        profile.phone = data.get("phone", profile.phone)
-        request.user.email = data.get("email", request.user.email)
-        profile.save()
-        request.user.save()
-        return JsonResponse({"status": "ok"})
-    return JsonResponse({"status": "error"}, status=400)
-
-@login_required
-def upload_photo(request):
-    if request.method == "POST" and request.FILES.get("photo"):
-        profile = request.user.profile
-        profile.photo = request.FILES["photo"]
-        profile.save()
-    return redirect("profile")  # reload profile page
